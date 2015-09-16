@@ -119,9 +119,9 @@ for(T in 1:Tmax) {NN[T+1]=NN[T]*(1+R*(1-NN[T]/K))}
 plot(1:(Tmax+1),NN, xlab='time', ylab= 'N', col='red')
 
 #making function of loop data
-geomFun= function(R, N, Tmax){NN=matrix(NA, nrow=1, ncol=Tmax+1)
+discretelosgisticfun= function(R, NN, K){NN=matrix(NA, nrow=1, ncol=Tmax+1)
 NN[1]=N 
-for(T in 1:Tmax) {NN[T+1]=NN(T)(1+R(1-NN[T]/K))}
+for(T in 1:Tmax) {NN[T+1]=NN(T)*(1+R*(1-NN[T]/K))}
 plot(1:(Tmax+1),NN, xlab='time', ylab= 'N', col='red')
 }
 
