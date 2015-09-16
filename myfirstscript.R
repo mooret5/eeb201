@@ -73,3 +73,54 @@ while(xx < 10){
  cat ("not excited about the number ", xx, "\n)}
 }
 print(xx)
+#Pseudo-code, model examples
+#N(t+1)=R*N(t)
+#should use a for loop for this
+#set N=100
+#set R=1.05
+#loop over 10 years
+#each yeah multiply N by R to update population size
+#show final value of N
+#initialize a vector to hold all values through N time, set first element to 100
+#store the new value in the next empty spot
+#plot N vector against time
+
+#geometric model example
+#initial conditions
+N=100
+R=1.05
+T=10
+#list of spaces to store values
+NN=matrix(NA, nrow=1, ncol=T+1)
+NN[1]=N
+
+for(T in 1:10) {NN[T+1]=R*NN[T]}
+
+NN
+plot(1:11,NN, xlab='time', ylab= 'N', col='red')
+
+
+
+geomFun= function(R, N, Tmax){NN=matrix(NA, nrow=1, ncol=Tmax+1)
+NN[1]=N 
+
+for(T in 1:Tmax) {NN[T+1]=R*NN[T]}
+
+ plot(1:(Tmax+1),NN, xlab='time', ylab= 'N', col='red')
+}
+
+
+
+N=50
+R=1.05
+T=10
+#list of spaces to store values
+NN=matrix(NA, nrow=1, ncol=T+1)
+NN[1]=N
+ 
+ for(T in 1:10) {NN[T+2]=R*NN[T]}
+ 
+ NN
+ plot(1:11,NN, xlab='time', ylab= 'N', col='red')
+
+
