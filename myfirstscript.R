@@ -93,34 +93,37 @@ T=10
 #list of spaces to store values
 NN=matrix(NA, nrow=1, ncol=T+1)
 NN[1]=N
-
+#making for loop
 for(T in 1:10) {NN[T+1]=R*NN[T]}
-
-NN
+#plotting loop
 plot(1:11,NN, xlab='time', ylab= 'N', col='red')
-
-
-
+#making function of loop data
 geomFun= function(R, N, Tmax){NN=matrix(NA, nrow=1, ncol=Tmax+1)
 NN[1]=N 
-
 for(T in 1:Tmax) {NN[T+1]=R*NN[T]}
-
  plot(1:(Tmax+1),NN, xlab='time', ylab= 'N', col='red')
 }
 
-
-
-N=50
+#discreet model example
+#initial conditions
+N=100
 R=1.05
-T=10
+Tmax=10
+K=100
 #list of spaces to store values
 NN=matrix(NA, nrow=1, ncol=T+1)
 NN[1]=N
- 
- for(T in 1:10) {NN[T+2]=R*NN[T]}
- 
- NN
- plot(1:11,NN, xlab='time', ylab= 'N', col='red')
+#making for loop
+for(T in 1:Tmax) {NN[T+1]=NN[T]*(1+R*(1-NN[T]/K))}
+#plotting loop
+plot(1:(Tmax+1),NN, xlab='time', ylab= 'N', col='red')
+
+#making function of loop data
+geomFun= function(R, N, Tmax){NN=matrix(NA, nrow=1, ncol=Tmax+1)
+NN[1]=N 
+for(T in 1:Tmax) {NN[T+1]=NN(T)(1+R(1-NN[T]/K))}
+plot(1:(Tmax+1),NN, xlab='time', ylab= 'N', col='red')
+}
+
 
 
