@@ -3,19 +3,19 @@
 
 #make a basic histogram in R:
 
-#first, draw 1000 random values from a standard normal distribution (SD=1):
+#first, draw 1000 random values from a standard normal distribution (SD=1):vector of values
 s1<-rnorm(1000,mean=0,sd=1)
 
-#now do 1000 drawn from a normal distribution with SD=3.
+#now do 1000 drawn from a normal distribution with SD=3.vector of values
 s3<-rnorm(1000,mean=0,sd=3)
 
 #plot histograms of both on same panel and save to a file:
 pdf(file="~/Dropbox/Kirk_stuff/KEL_bootcamp/Normal_hist.pdf", width=4,height=7); 
 #open the file
 
-par(mfrow=c(2,1), mar=c(4, 4, 3, 2)) #sets plotting area and margins
+par(mfrow=c(2,1), mar=c(4, 4, 3, 2)) #sets plotting area and margins bottom, left, top, right, #how many plots (mfrow)
 
-hist(s1,col=2,xlab="Value",main="Sigma=1") #make first hist
+hist(s1,col=2,xlab="Value",main="Sigma=1") #make first hist, first vector, color, xlabel, title
 
 hist(s3,col=4,xlab="Value",main="Sigma=3") #make second hist
 
@@ -31,11 +31,11 @@ pdf(file="~/Dropbox/Kirk_stuff/KEL_bootcamp/Normal_hist.fancy.pdf", width=4,heig
 
 par(mfrow=c(2,1), mar=c(4, 4, 3, 2)) #sets plotting area and margins
 
-hist(s1,col=2,xlab="Value",main=expression(paste(sigma,"=1"))) #make first hist
+hist(s1,col=2,xlab="Value",main=expression(paste(sigma,"=1"))) #make first hist, paste greek letter
 
 hist(s3,col=4,xlab="Value",main=expression(paste(sigma,"=3")))  #make second hist
 
-dev.off() #shuts off current output device
+dev.off() #shuts off current output device, puts stuff in different document
 
 
 
@@ -46,11 +46,11 @@ dev.off() #shuts off current output device
 
 pdf(file="~//Dropbox/Kirk_stuff/KEL_bootcamp/Normal_density.pdf", width=6,height=6); #open the file
 
-par(mfrow=c(1,1), mar=c(4, 4, 3, 2)) #sets plotting area and margins
+par(mfrow=c(1,1), mar=c(4, 4, 3, 2)) #sets plotting area and margins, here 1 plot
 
-plot(density(s1),col=2,lwd=4,xlab="Value",xlim=c(-15,15),main="Normal distribution")
+plot(density(s1),col=2,lwd=4,xlab="Value",xlim=c(-15,15),main="Normal distribution") #smooth line using density, lwd=line width, xlim=sets limits, 2=red
 
-lines(density(s3),col=4,lwd=4) #add the SD=3 values
+lines(density(s3),col=4,lwd=4) #add the SD=3 values, adds extra lines on a plot, 4=blue
 
 legend(-15,0.4,c("sigma=1","sigma=3"),lwd=4,col=c(2,4),cex=1.5) #put a legend on
 
