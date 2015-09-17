@@ -52,10 +52,10 @@ plot(density(s1),col=2,lwd=4,xlab="Value",xlim=c(-15,15),main="Normal distributi
 
 lines(density(s3),col=4,lwd=4) #add the SD=3 values, adds extra lines on a plot, 4=blue
 
-legend(-15,0.4,c("sigma=1","sigma=3"),lwd=4,col=c(2,4),cex=1.5) #put a legend on
+legend(-15,0.4,c("sigma=1","sigma=3"),lwd=4,col=c(2,4),cex=1.5) #put a legend on, location of legend, text in legend, cex=controls relative size of legend
 
 #we can highlight the upper 10% of each distribution with a vertical line:
-abline(v=quantile(s1,0.9),lty=2,lwd=3,col=2) #puts a vertical line onto the plot for s1
+abline(v=quantile(s1,0.9),lty=2,lwd=3,col=2) #puts a vertical line onto the plot for s1, abline=add straight line, v=vertical, quantile=gives % of distribution here 10%, lty=line style (2 is dashed line)
 abline(v=quantile(s3,0.9),lty=2,lwd=3,col=4) #puts a vertical line onto the plot for s3
 dev.off()
 
@@ -73,14 +73,14 @@ pdf(file="/Users/kirk/Dropbox/Kirk_stuff/KEL_bootcamp/Normal_boxplot.pdf", width
 
 par(mfrow=c(1,1), mar=c(4, 4, 3, 2)) #sets plotting area and margins
 
-boxplot(cbind(s1,s3),names=c("Sigma=1","Sigma=3"),main="Draws from a normal distribution",col=c(2,4))
+boxplot(cbind(s1,s3),names=c("Sigma=1","Sigma=3"),main="Draws from a normal distribution",col=c(2,4)) #creates boxplot, cbind=puts in 2 columns, names=like xlab
 
 dev.off()
 
 
 ######################################
 
-#Let's make a histogram of these values, but putting boht on the same axes.
+#Let's make a histogram of these values, but putting both on the same axes.
 #We can do that...
 #But, we need to have the same bin widths for both datasets:
 
@@ -103,7 +103,7 @@ pdf(file="~/Dropbox/Kirk_stuff/KEL_bootcamp/normal_barplot.pdf", width=6,height=
 par(mfrow=c(1,1), mar=c(4, 4, 3, 2)) #sets plotting area and margins
 
 barplot(rbind(counts_s1,counts_s3),col=c(2,4),beside=T,names.arg=seq(-10,9.5,by=1),xlab="Value",ylab="Count")
-
+#rbind=combines rows
 legend(6,350,c(expression(paste(sigma,"=3")),expression(paste(sigma,"=6"))),col=c(2,4),lwd=4)
 
 dev.off()
