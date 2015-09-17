@@ -131,7 +131,7 @@ par(mfrow=c(1,1), mar=c(5, 5, 3, 2)) #sets plotting area and margins
 x<-rnorm(100)
 y<-x+rnorm(100,sd=0.2)
 
-plot(x,y,pch=19,cex.lab=2,cex.axis=2)
+plot(x,y,pch=19,cex.lab=2,cex.axis=2) #pch=symbol (19 is filled in circles, 10 is cross/circles), label, axis. can use sample to sample data= sample(s1,10)
 
 dev.off()
 
