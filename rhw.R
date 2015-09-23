@@ -33,7 +33,49 @@ for(ii in 1:length(years)){
 bankAccounts <- c(10, 9.2, 5.6, 3.7, 8.8, 0.5);
 
 #Now look at the error message the following lines of code produce. Can you think of a way to modify this loop so that the loop will compund the interest?
-
+compounded <- 
 interestRate <- 0.0125;
 for (i in 1:length(bankAccounts)) {
   compounded[i] <- interestRate*bankAccounts[i] + bankAccounts[i]; }
+#6
+bankAccounts <- c(10, 9.2, 5.6); #define bank accounts here
+interestRate <- 0.0525;   
+house <- c(4.8, 3.8, 5.7); #deduct
+food<- c(3.5, 4.3, 5.0);    #deduct
+fun <- c(7.8, 2.1, 10.5);  #deduct
+#and incomes (through TAships) of 
+income <- c(21, 21, 21); #add this
+
+for (j in 1:5) {
+  for (i in 1:length(bankAccounts)) {
+    #step 1 modify bankAccounts so that amounts reflect income and expenses
+    #step 2 get calculate interest and add to accounts from step 1
+    #you can actually use the line you have already written if you
+    #modify amounts in bankAccounts directly in step 1
+    
+  }
+}
+#7
+house <- c(4.8, 3.8, 5.7); 
+food<- c(3.5, 4.3, 5.0); 
+fun <- c(7.8, 2.1, 10.5); 
+
+#and incomes (through TAships) of 
+
+income <- c(21, 21, 21)
+
+#8
+xx <- 1
+xx <- 1
+while(xx < 5) {
+  xx <- xx+1; 
+  if (xx == 3) {
+    break; }
+}
+print(xx)
+
+#9
+if (xx < -1) print('small');
+if (xx < 1) print ('medium');
+if (xx > 1) print ('big')
+
