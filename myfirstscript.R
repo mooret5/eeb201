@@ -94,17 +94,20 @@ T=10
 NN=matrix(NA, nrow=1, ncol=T+1)
 NN[1]=N
 #making for loop
+#mini-exercise 3.2.1
 for(T in 1:10) {NN[T+1]=R*NN[T]}
 #plotting loop
 plot(1:11,NN, xlab='time', ylab= 'N', col='red')
 #making function of loop data
+#mini-exercise 3.2.2
 geomFun= function(R, N, Tmax){NN=matrix(NA, nrow=1, ncol=Tmax+1)
 NN[1]=N 
 for(T in 1:Tmax) {NN[T+1]=R*NN[T]}
  plot(1:(Tmax+1),NN, xlab='time', ylab= 'N', col='red')
 }
 
-#discreet model example
+#discrete model example
+
 #initial conditions
 N=100
 R=1.05
@@ -117,7 +120,7 @@ NN[1]=N
 for(T in 1:Tmax) {NN[T+1]=NN[T]*(1+R*(1-NN[T]/K))}
 #plotting loop
 plot(1:(Tmax+1),NN, xlab='time', ylab= 'N', col='red')
-
+#mini-exercise 3.3.1
 #making function of loop data
 discretelosgisticfun= function(R, NN, K){NN=matrix(NA, nrow=1, ncol=Tmax+1)
 NN[1]=N 
@@ -125,5 +128,54 @@ for(T in 1:Tmax) {NN[T+1]=NN(T)*(1+R*(1-NN[T]/K))}
 plot(1:(Tmax+1),NN, xlab='time', ylab= 'N', col='red')
 }
 
+#mini-exercise 3.3.2
+#mini-exercise 4.1.1
+plot(ICVec, nnVec, xlab=’Initial population size’,
+ylab=’Population at time=5’, type=’b’, col=’red’)
+#4.2.1
+for (ii in 1:length(ICVec)) {
+init <- ICVec[ii]
+logisticOutput <- lsoda(init, tseq, logisticGrowthODE, pars)
+nnVec[ii] <- logistic.output[index,2]
+ }
 
+#5.2
+nnVec <- rep(NA, 1, 1:5(ICVec))
+plot(ICVec, nnVec, xlab=’Initial population size’,
+ylab=’Population at time=5’, type=’b’, col=’red’)
 
+#6
+# source("LV_script.R")
+# A script to run a simple 2-dimensional ODE system
+# equations are
+# dN/dt = r N - c N P
+# dP/dt = e c N P - d P
+library(deSolve)
+# pred-prey cycles
+pars <- c(rr = 2, cc = 0.1, ee = 0.1, dd = 0.2); init <- c(200, 20)
+tseq <- seq(0, 50, by=0.02)
+# define the model equations
+# note that yy is now a vector with two elements for the two state variables
+lvPredpreyODE <- function(tt, yy, pars) {
+derivs <-rep(NA, 2)
+derivs[1] <- pars[’rr’] * yy[1] - pars[’cc’] * yy[1] * yy[2]
+derivs[2] <- pars[’ee’] * pars[’cc’] * yy[1] * yy[2] - pars[’dd’] * yy[2]
+return(list(c(derivs)))
+}
+lvPredpreyOutput <- lsoda( init, tseq, lvPredpreyODE, pars)
+# make array of two plots
+par(mfrow=c(1,2))
+# plot output as time series
+plot(lvPredpreyOutput[,1], lvPredpreyOutput[,2],
+col="blue", type="l",
+xlab="time", ylab="# of individuals",
+ylim = c(0,1.2*max(lvPredpreyOutput[,2])))
+   # add a line to the plot with the predators
+   points(lvPredpreyOutput[,1], lvPredpreyOutput[,3], col="red", type="l")
+   # add a simple legend
+   legText = c("Prey", "Predator")
+   legend("topright", legText, lty=1, col = c(’blue’,’red’))
+   10
+   # plot output as a phase plot, in second subplot
+   plot(lvPredpreyOutput[,2], lvPredpreyOutput[,3],
+        xlab="Prey", ylab="Predators", type="l", col=’black’)
