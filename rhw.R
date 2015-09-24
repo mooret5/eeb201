@@ -65,17 +65,10 @@ fun <- c(7.8, 2.1, 10.5);
 income <- c(21, 21, 21)
 
 #8
-xx <- 1
-xx <- 1
-while(xx < 5) {
-  xx <- xx+1; 
-  if (xx == 3) {
-    break; }
+while(x <- 1:17){
+  sum(x);
 }
-print(xx)
-
 #9
 if (xx < -1) print('small');
 if (xx < 1) print ('medium');
 if (xx > 1) print ('big')
-
